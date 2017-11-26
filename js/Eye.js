@@ -125,4 +125,4 @@ Eye.prototype.stuff_collide_ = function (world, p1, p2, check_walls, check_items
     }
 
     return minres;
-}
+};
