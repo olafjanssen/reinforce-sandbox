@@ -11,13 +11,6 @@ var Agent = function () {
     this.op = this.p; // old position
     this.angle = 0; // direction facing
 
-    this.actions = [];
-    //this.actions.push([0,0]);
-    this.actions.push(0);
-    this.actions.push(1);
-    this.actions.push(2);
-    this.actions.push(3);
-
     // properties
     this.rad = 10;
     this.eyes = [];
@@ -25,19 +18,20 @@ var Agent = function () {
         this.eyes.push(new Eye(this, k * 0.21));
     }
 
-    this.brain = null; // set from outside
+    // number of input and outputs
+    this.num_states = this.eyes.length * 5 + 2;
+    this.num_actions = 4;
 
-    this.reward_bonus = 0.0;
+    this.brain = null; // neural network brain, set from outside
+
     this.digestion_signal = 0.0;
 
+    // statistics for food eaten
     this.apples = 0;
     this.poison = 0;
 
-    // outputs on world
+    // current output on world
     this.action = 0;
-
-    this.prevactionix = -1;
-    this.num_states = this.eyes.length * 5 + 2;
 };
 
 Agent.prototype = {
@@ -56,7 +50,7 @@ Agent.prototype = {
      * @returns {number}
      */
     getMaxNumActions: function () {
-        return this.actions.length;
+        return this.num_actions;
     },
 
     /**
@@ -173,7 +167,7 @@ Agent.prototype = {
             }
         }
         // proprioception and orientation
-        input_array[ne + 0] = this.v.x;
+        input_array[ne] = this.v.x;
         input_array[ne + 1] = this.v.y;
 
         this.action = this.brain.act(input_array);
