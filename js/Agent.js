@@ -61,6 +61,7 @@ Agent.prototype = {
 
     /**
      * Draw the agent in the Canvas context.
+     * (Should be called every draw update)
      *
      * @param ctx   the Canvas context
      */
@@ -83,6 +84,7 @@ Agent.prototype = {
 
     /**
      * Update the Agent in the given World context.
+     * (Should be called every World update)
      *
      * This means updating the input nodes of the neural network, activating the network and turn the output of
      * the network into action (moving the Agent).
