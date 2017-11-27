@@ -3,7 +3,6 @@ var WaterWorld = (function () {
     var canvas, ctx;
     var simSpeed = 2;
 
-    var agentView = false;
     var humanControls = false;
     var humanAction = -1;
     var current_interval_id;
@@ -141,7 +140,7 @@ var WaterWorld = (function () {
     }
 
     function toggleAgentView() {
-        agentView = !agentView;
+        world.agentView = !world.agentView;
     }
 
     document.onkeydown = function (e) {

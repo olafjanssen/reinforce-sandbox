@@ -8,6 +8,8 @@ var World = function () {
     this.W = canvas.width;
     this.H = canvas.height;
 
+    this.agentView = false;
+
     this.clock = 0;
 
     // set up walls in the world
@@ -50,9 +52,11 @@ World.prototype = {
         }
 
         // draw items
-        for (var i = 0, n = this.items.length; i < n; i++) {
-            var it = this.items[i];
-            it.draw(ctx);
+        if (!this.agentView) {
+            for (var i = 0, n = this.items.length; i < n; i++) {
+                var it = this.items[i];
+                it.draw(ctx);
+            }
         }
     },
     /**
