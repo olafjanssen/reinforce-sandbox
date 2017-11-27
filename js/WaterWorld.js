@@ -127,7 +127,7 @@ var WaterWorld = (function () {
     }
 
     function loadAgent() {
-        $.getJSON("agentzoo/wateragent.json", function (data) {
+        $.getJSON("trained-agents/wateragent.json", function (data) {
             var agent = world.agents[0].brain;
             agent.fromJSON(data); // corss your fingers...
             // set epsilon to be much lower for more optimal behavior
